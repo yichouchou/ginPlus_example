@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/yichouchou/ginPlus/bind"
-	"github.com/yichouchou/ginPlus/examples"
 )
 
 //todo 在controller结构体上添加请求类型，请求内容类型，字符类型等等，鉴权类型等
@@ -100,18 +99,3 @@ func (s *Hello) Hi7(reqList bind.ReqTest) (index int, errHi5 error) {
 type Example struct {
 }
 
-// [str1, str2, str3 examples.DemoRest]
-// @GET /Say1
-func (example *Example) Say1(str1, str2, str3 examples.DemoRest) (str4 string) {
-	fmt.Println(str1, str2, str3)
-	return "这个是example say1方法rest"
-}
-
-// {str1, str2, str3 string,rest examples.DemoRest}
-// @POST /Say2
-func (example *Example) Say2(str1, str2, str3 string, rest examples.DemoRest) (str4 string) {
-	fmt.Println("--post请求，既包含请求体的内容，也包含请求头的内容，参数绑定成功---")
-	fmt.Println(str1, str2, str3)
-	fmt.Println(rest)
-	return "这个是example say2方法rest"
-}
