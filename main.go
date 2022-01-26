@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	engine := gin.Default() //todo 考虑兼容 iris的注解路由
+	engine := gin.Default()
 	base := annotation.New()
-	base.Dev(true)
+	base.Dev(false)
 	base.Register(engine, new(controller.Hello), new(controller.UserRest))
 	engine.Run(":8088")
 }

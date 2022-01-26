@@ -7,13 +7,14 @@ import (
 )
 
 //todo 在controller结构体上添加请求类型，请求内容类型，字符类型等等，鉴权类型等
+//@resp-custom-user
 type Hello struct {
 	Name string
 	Age  int
 }
 
 // [name string, password string, age int]
-// @GET /block1
+// @GET /Hi1
 func (s *Hello) Hi1(parm1 string, parm2 string, parm3 int, hiValue bind.ReqTest, hi *bind.ReqTest) (commentHi1 string, errHi1 error) {
 	fmt.Println(parm1 + parm2)
 	fmt.Println(parm3)
@@ -22,21 +23,21 @@ func (s *Hello) Hi1(parm1 string, parm2 string, parm3 int, hiValue bind.ReqTest,
 	return "ni hao", nil
 }
 
-// @POST /block2
+// @POST /Hi2
 func (s *Hello) Hi2(hiValue bind.ReqTest, hi *bind.ReqTest) (commentHi2 bind.ReqTest, errHi2 error) {
 	fmt.Println(hi)
 	fmt.Println(hiValue)
 	return bind.ReqTest{}, nil
 }
 
-// @GET /block3
+// @GET /Hi3
 func (s *Hello) Hi3(name, password string, age, year int) (commentHi3 int, errHi3 error) {
 	fmt.Println("---get请求，无参数注解，多基本数据类型已经调通")
 	return 10, nil
 }
 
 // {List []bind.ReqTest}
-// @POST /block4
+// @POST /Hi4
 func (s *Hello) Hi4(reqList []bind.ReqTest) (index int, errHi4 error) {
 	fmt.Println("这是post请求接受结构体数组")
 	fmt.Println("---post请求，有参数注解，结构体值数组已经调通")
@@ -48,7 +49,7 @@ func (s *Hello) Hi4(reqList []bind.ReqTest) (index int, errHi4 error) {
 }
 
 // [reqList *bind.ReqTest]
-// @GET /block5
+// @GET /Hi5
 func (s *Hello) Hi5(reqList *bind.ReqTest) (index int, errHi5 error) {
 	fmt.Println(reqList)
 	fmt.Println("这是get请求接受结构体指针")
@@ -57,7 +58,7 @@ func (s *Hello) Hi5(reqList *bind.ReqTest) (index int, errHi5 error) {
 }
 
 // {List []*bind.ReqTest}
-// @POST /block6
+// @POST /Hi6
 func (s *Hello) Hi6(reqList []*bind.ReqTest) (index int, errHi4 error) {
 	fmt.Println("这是post请求接受指针结构体数组")
 	fmt.Println("---post请求，有参数注解，结构体指针数组已经调通")
@@ -68,7 +69,7 @@ func (s *Hello) Hi6(reqList []*bind.ReqTest) (index int, errHi4 error) {
 }
 
 // [reqList bind.ReqTest]
-// @GET /block7
+// @GET /Hi7
 func (s *Hello) Hi7(reqList bind.ReqTest) (index int, errHi5 error) {
 	fmt.Println(reqList)
 	fmt.Println("这是get请求接受结构体指针")
@@ -98,4 +99,3 @@ func (s *Hello) Hi7(reqList bind.ReqTest) (index int, errHi5 error) {
 // Example ...
 type Example struct {
 }
-
