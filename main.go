@@ -10,7 +10,7 @@ import (
 func main() {
 	engine := gin.Default()
 	base := annotation.New()
-	base.Dev(false)
+	base.Dev(true)
 	base.Register(engine, new(controller.Hello), new(controller.UserRest))
 	engine.Run(":8088")
 }

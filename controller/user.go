@@ -2,24 +2,32 @@ package controller
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/yichouchou/ginPlus/bind"
 )
 
-//todo 在controller结构体上添加请求类型，请求内容类型，字符类型等等，鉴权类型等
-//@resp-custom-user
+type BaseReq struct {
+	lastLoginTime time.Duration
+	Way           string
+	Info          Example
+}
+
+// todo 在controller结构体上添加请求类型，请求内容类型，字符类型等等，鉴权类型等
+// @resp-custom-user
 type Hello struct {
 	Name string
 	Age  int
 }
 
-// [name string, password string, age int]
 // @GET /Hi1
-func (s *Hello) Hi1(parm1 string, parm2 string, parm3 int, hiValue bind.ReqTest, hi *bind.ReqTest) (commentHi1 string, errHi1 error) {
+func (s *Hello) Hi1(parm1 string, parm2 string, parm3 int, hiValue BaseReq, hi *BaseReq) (commentHi1 string, errHi1 error) {
 	fmt.Println(parm1 + parm2)
 	fmt.Println(parm3)
 	fmt.Println(hi)
 	fmt.Println(hiValue)
+	fmt.Println(hiValue.Way)
+	fmt.Println(hiValue.Info)
 	return "ni hao", nil
 }
 
